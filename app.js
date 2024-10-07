@@ -12,14 +12,12 @@ const bodyParser = require("body-parser");
 const app = express();
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "https://rivu.vercel.app/");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", "true"); // Optional: if credentials are needed
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   next();
 });
-
-// app.use(cors({ origin: "https://bookreview-backend-3pg5.onrender.com/api/", methods: "GET,POST,PUT,DELETE", credentials: true }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,3 +36,4 @@ app.get('/', (req, res) => res.send('Hello beautiful world!'));
 const port = process.env.PORT || 8082;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
+// app.use(cors({ origin: "https://bookreview-backend-3pg5.onrender.com/api/", methods: "GET,POST,PUT,DELETE", credentials: true }));

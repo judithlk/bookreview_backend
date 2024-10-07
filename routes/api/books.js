@@ -34,12 +34,11 @@ router.get("/genre/:genre", async (req, res) => {
 
 router.post("/", checkAuth, upload.single("image"), async (req, res) => {
   try {
-    // const result = await cloudinary.uploader.upload(req.file.path);
     let cloudinaryId = null;
     let imageUrl = null;
     if (req.file) {
       const result = await cloudinary.uploader.upload(req.file.path, {
-        folder: "book_covers", // Folder name in Cloudinary
+        folder: "book_covers", 
       });
       cloudinaryId = result.public_id;
       imageUrl = result.secure_url;
