@@ -11,7 +11,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: "https://bookreview-backend-3pg5.onrender.com/api/", methods: "GET,POST,PUT,DELETE", credentials: true }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
