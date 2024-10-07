@@ -36,21 +36,16 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
       imageUrl,
     });
 
-   
     const existingEmail = await User.findOne({ email });
     if (existingEmail)
       return res.status(400).json({
-        status: "failed",
-        data: [],
-        message: "Email already taken.",
+        error: "Email already taken.",
       });
 
     const existingUsername = await User.findOne({ username });
     if (existingUsername)
       return res.status(400).json({
-        status: "failed",
-        data: [],
-        message: "Username already taken.",
+        error: "Username already taken.",
       });
 
     await user.save();

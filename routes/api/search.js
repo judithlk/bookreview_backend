@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
   
       res.status(200).json(books);
     } catch (error) {
-      res.status(500).json({ message: "Error fetching books" });
+      res.status(500).json({ error: "Error fetching books" });
     }
   });
   

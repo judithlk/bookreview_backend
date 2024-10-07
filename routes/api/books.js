@@ -56,7 +56,7 @@ router.post("/", checkAuth, upload.single("image"), async (req, res) => {
     });
 
     const book = await newBook.save();
-    res.json({ msg: "Book added successfully", data: book });
+    res.json({ message: "Book added successfully", data: book });
   } catch (err) {
     res.status(400).json({ error: "Unable to add this book" });
   }
@@ -64,9 +64,9 @@ router.post("/", checkAuth, upload.single("image"), async (req, res) => {
 
 router.put("/:id", checkAuth, (req, res) => {
   Book.findByIdAndUpdate(req.params.id, req.body)
-    .then((book) => res.json({ msg: "Updated successfully" }))
+    .then((book) => res.json({ message: "Book updated successfully" }))
     .catch((err) =>
-      res.status(400).json({ error: "Unable to update the Database" })
+      res.status(400).json({ error: "Failed to update the book" })
     );
 });
 
@@ -84,9 +84,9 @@ router.delete("/:id", checkAuth, async (req, res) => {
 
     await Book.findByIdAndDelete(req.params.id);
 
-    res.json({ msg: "Book deleted successfully" });
+    res.json({ message: "Book deleted successfully" });
   } catch (err) {
-    res.status(500).json({ error: "Unable to delete the book" });
+    res.status(500).json({ error: "Failed to delete the book" });
   }
 });
 
